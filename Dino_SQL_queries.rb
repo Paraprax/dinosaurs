@@ -23,7 +23,9 @@
 7. SELECT name FROM dinos ORDER BY name ASC LIMIT 1;
 
 #Rename the five longest dinosaurs The Famous Five.
-8. SELECT name, length, species FROM dinos WHERE length>0 ORDER BY length DESC LIMIT 5;
+8.
+  #initial crude method
+  SELECT name, length, species FROM dinos WHERE length>0 ORDER BY length DESC LIMIT 5;
    #read returns, then
    UPDATE dinos SET SPECIES='The Famous Five'
    WHERE name='Seismosaurus'
@@ -31,3 +33,6 @@
    OR name='Argentinosaurus'
    OR name='Brachiosaurus'
    OR name='Paralititan';
+
+   #subsquent more elegant method
+   UPDATE dinos SET SPECIES='The Famous Fiveosaurs' WHERE name IN (SELECT name FROM dinos WHERE length>0 ORDER BY length DESC LIMIT 5);
